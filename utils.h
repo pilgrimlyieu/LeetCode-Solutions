@@ -86,3 +86,12 @@ std::ostream &operator<<(std::ostream &os, const LValueVec<T> &lv) {
 #define VEC(...) LValueVec<int>({__VA_ARGS__})
 #define VECSTR(...) LValueVec<std::string>({__VA_ARGS__})
 #define MAT(...) LValueVec<std::vector<int>>({__VA_ARGS__})
+
+// string --> vector<char>
+inline std::vector<char> S2V(const std::string& s) {
+    return std::vector<char>(s.begin(), s.end());
+}
+// vector<char> --> string
+inline std::string V2S(const std::vector<char>& v) {
+    return std::string(v.begin(), v.end());
+}
