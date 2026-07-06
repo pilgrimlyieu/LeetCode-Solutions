@@ -1,0 +1,11 @@
+If:
+  PathMatch: .*\.h
+CompileFlags:
+  Add: [-x, c++-header]
+---
+If:
+  PathMatch: solutions/.*\.cpp
+Diagnostics:
+  UnusedIncludes: None
+CompileFlags:
+  Add: [-Wno-unused-variable]

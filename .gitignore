@@ -1,12 +1,13 @@
-# CMake generated files
-cmake-build-*/
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
+# Build artifacts
+build/
 
-# CLion specific files
 .idea/
+cmake-build-*/
+
+# Executables
+*.exe
+*.out
+*.app
 
 # Compiled Object files
 *.slo
@@ -15,13 +16,8 @@ cmake_install.cmake
 *.a
 *.so
 
-# Executables
-*.exe
-*.out
-*.app
-
-# Doc
+# leetcode.nvim 题面缓存等
 **/doc/**
 
-# Test
+# Scratch
 test.cpp
