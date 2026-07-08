@@ -12,6 +12,7 @@ build := root / "build"
 
 cxx := "g++"
 flags := `xargs < compile_flags.txt`
+debug_flags := "-g3 -O0 -fno-omit-frame-pointer"
 san := "-fsanitize=address,undefined"
 
 # 默认：裸 just 列出所有命令
@@ -53,7 +54,7 @@ debug F:
     src=$(just _resolve "{{ F }}")
     mkdir -p "{{ build }}"
     out="{{ build }}/${${src:t}%.cpp}.dbg"
-    {{ cxx }} {{ flags }} "$src" -o "$out"
+    {{ cxx }} {{ flags }} {{ debug_flags }} "$src" -o "$out"
     print -r -- "$out"
 
 # 全量编译（迁移验证 / utils.h 改动回归）。只编译不运行
