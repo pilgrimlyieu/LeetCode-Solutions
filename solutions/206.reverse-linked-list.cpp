@@ -20,27 +20,23 @@ using namespace std;
 class Solution {
 public:
   ListNode *reverseList(ListNode *head) {
-    vector<ListNode *> v;
-    v.assign(5001, nullptr);
-    v[0] = nullptr;
-    int idx = 0;
-    while (head) {
-      v[++idx] = head;
-      head = head->next;
+    ListNode *prev = nullptr;
+    ListNode *curr = head;
+    while (curr) {
+      ListNode *next = curr->next;
+      curr->next = prev;
+      prev = curr;
+      curr = next;
     }
-    ListNode *final = v[idx];
-    ListNode *current = final;
-    while (current) {
-      current->next = v[--idx];
-      current = current->next;
-    }
-    return final;
+    return prev;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  cout << s.reverseList("[1,2,3,4,5]"_list) << endl;
+  CHECK(s.reverseList("[1,2,3,4,5]"_list), "[5,4,3,2,1]"_list);
+  CHECK(s.reverseList("[]"_list), "[]"_list);
+  CHECK(s.reverseList("[1]"_list), "[1]"_list);
   return 0;
 }

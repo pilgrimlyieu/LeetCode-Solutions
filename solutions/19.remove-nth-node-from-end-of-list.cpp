@@ -20,32 +20,28 @@ using namespace std;
 class Solution {
 public:
   ListNode *removeNthFromEnd(ListNode *head, int n) {
-    int length = 0;
-    ListNode *current = head;
-    while (current) {
-      length++;
-      current = current->next;
+    auto dummy = new ListNode(0, head);
+    auto first = dummy;
+    auto second = head;
+    while (n--) {
+      second = second->next;
     }
-    int pos = length - n;
-    if (pos == 0) {
-      return head->next;
-    } else {
-      ListNode *father = head;
-      for (int i = 0; i < pos - 1; i++) {
-        father = father->next;
-      }
-      father->next = father->next->next;
-      return head;
+    while (second) {
+      first = first->next;
+      second = second->next;
     }
+    first->next = first->next->next;
+    return dummy->next;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  cout << s.removeNthFromEnd("[1,2,3,4,5]"_list, 2) << endl; // 1,2,3,5
-  cout << s.removeNthFromEnd("[1,2,3,4,5]"_list, 1) << endl; // 1,2,3,4
-  cout << s.removeNthFromEnd("[1,2,3,4,5]"_list, 5) << endl; // 2,3,4,5
-  cout << s.removeNthFromEnd("[1]"_list, 1) << endl;         // NULL
+  CHECK(s.removeNthFromEnd("[1,2,3,4,5]"_list, 2), "[1,2,3,5]"_list);
+  CHECK(s.removeNthFromEnd("[1,2,3,4,5]"_list, 1), "[1,2,3,4]"_list);
+  CHECK(s.removeNthFromEnd("[1,2,3,4,5]"_list, 5), "[2,3,4,5]"_list);
+  CHECK(s.removeNthFromEnd("[1]"_list, 1), "[]"_list);
+  CHECK(s.removeNthFromEnd("[1,2]"_list, 1), "[1]"_list);
   return 0;
 }

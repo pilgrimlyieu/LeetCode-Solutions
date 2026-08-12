@@ -18,25 +18,22 @@ using namespace std;
 class Solution {
 public:
   ListNode *detectCycle(ListNode *head) {
-    ListNode *fir = head;
-    ListNode *sec = head;
-    int time = 0;
-    while (sec) {
-      if (time % 2 == 0) {
-        fir = fir->next;
+    ListNode *slow = head;
+    ListNode *quick = head;
+    while (quick) {
+      if (!quick->next) {
+        break;
       }
-      sec = sec->next;
-      if (fir == sec && time >= 1) {
-        ListNode *thi = head;
-        while (fir) {
-          if (fir == thi) {
-            return fir;
-          }
-          fir = fir->next;
-          thi = thi->next;
+      slow = slow->next;
+      quick = quick->next->next;
+      if (slow == quick) {
+        ListNode *root = head;
+        while (slow != root) {
+          slow = slow->next;
+          root = root->next;
         }
+        return slow;
       }
-      time++;
     }
     return nullptr;
   }
@@ -45,6 +42,13 @@ public:
 
 int main(void) {
   Solution s;
-
+  auto l1 = "[3,2,0,-4]"_list;
+  (*l1)[3]->next = (*l1)[1];
+  CHECK(s.detectCycle(l1)->val, 2);
+  auto l2 = "[1,2]"_list;
+  (*l2)[1]->next = l2;
+  CHECK(s.detectCycle(l2)->val, 1);
+  auto l3 = "[1]"_list;
+  CHECK(s.detectCycle(l3), "[]"_list);
   return 0;
 }

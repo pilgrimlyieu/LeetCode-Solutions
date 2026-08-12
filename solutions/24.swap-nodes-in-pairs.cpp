@@ -20,46 +20,37 @@ using namespace std;
 class Solution {
 public:
   ListNode *swapPairs(ListNode *head) {
-    if (!(head && head->next)) {
+    if (!head || !head->next) {
       return head;
     }
-    vector<ListNode *> odds;
-    vector<ListNode *> evens;
-    odds.assign(51, nullptr);
-    evens.assign(51, nullptr);
-    int len = 0;
-    int oddi = 0;
-    int eveni = 0;
-    while (head) {
-      if (len % 2 == 0) {
-        evens[eveni++] = head;
-      } else {
-        odds[oddi++] = head;
+    ListNode *prev = nullptr;
+    ListNode *curr = head;
+    ListNode *res = head->next;
+    while (curr) {
+      ListNode *next = curr->next;
+      if (!next) {
+        break;
       }
-      len++;
-      head = head->next;
+      if (prev) {
+        prev->next = next;
+      }
+      curr->next = next->next;
+      next->next = curr;
+      prev = curr;
+      curr = curr->next;
     }
-    for (int i = 0; i < eveni; i++) {
-      evens[i]->next = odds[i + 1];
-    }
-    if (oddi != eveni) {
-      evens[eveni - 2]->next = evens[eveni - 1];
-    }
-    for (int i = 0; i < oddi; i++) {
-      odds[i]->next = evens[i];
-    }
-    return odds[0];
+    return res;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  cout << s.swapPairs("[]"_list) << endl;          // {}
-  cout << s.swapPairs("[1]"_list) << endl;         // 1
-  cout << s.swapPairs("[1,2]"_list) << endl;       // 2,1
-  cout << s.swapPairs("[1,2,3]"_list) << endl;     // 2,1,3
-  cout << s.swapPairs("[1,2,3,4]"_list) << endl;   // 2,1,4,3
-  cout << s.swapPairs("[1,2,3,4,5]"_list) << endl; // 2,1,4,3,5
+  CHECK(s.swapPairs("[]"_list), "[]"_list);
+  CHECK(s.swapPairs("[1]"_list), "[1]"_list);
+  CHECK(s.swapPairs("[1,2]"_list), "[2,1]"_list);
+  CHECK(s.swapPairs("[1,2,3]"_list), "[2,1,3]"_list);
+  CHECK(s.swapPairs("[1,2,3,4]"_list), "[2,1,4,3]"_list);
+  CHECK(s.swapPairs("[1,2,3,4,5]"_list), "[2,1,4,3,5]"_list);
   return 0;
 }

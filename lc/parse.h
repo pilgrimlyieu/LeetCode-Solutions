@@ -225,15 +225,31 @@ inline ListNode *build_list(const std::vector<int> &v) {
 template <typename T> struct Lit {
   std::vector<T> data;
   // NOLINTNEXTLINE(google-explicit-constructor)
-  operator std::vector<T> &() { return data; }
+  operator std::vector<T> &() {
+    return data;
+  }
   // NOLINTNEXTLINE(google-explicit-constructor)
-  explicit operator const std::vector<T> &() const { return data; }
-  auto begin() { return data.begin(); }
-  auto end() { return data.end(); }
-  [[nodiscard]] auto begin() const { return data.begin(); }
-  [[nodiscard]] auto end() const { return data.end(); }
-  [[nodiscard]] size_t size() const { return data.size(); }
-  decltype(auto) operator[](size_t i) { return data[i]; }
+  explicit operator const std::vector<T> &() const {
+    return data;
+  }
+  auto begin() {
+    return data.begin();
+  }
+  auto end() {
+    return data.end();
+  }
+  [[nodiscard]] auto begin() const {
+    return data.begin();
+  }
+  [[nodiscard]] auto end() const {
+    return data.end();
+  }
+  [[nodiscard]] size_t size() const {
+    return data.size();
+  }
+  decltype(auto) operator[](size_t i) {
+    return data[i];
+  }
 };
 
 } // namespace lc_parse

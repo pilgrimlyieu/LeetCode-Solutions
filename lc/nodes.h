@@ -1,6 +1,7 @@
 #pragma once
 
 #include <optional>
+#include <stdexcept>
 #include <vector>
 
 /**
@@ -10,21 +11,51 @@
 struct ListNode {
   int val;
   ListNode *next;
-  ListNode() : val(0), next(nullptr) {}
+  ListNode() : val(0), next(nullptr) {
+  }
   // NOLINTNEXTLINE(google-explicit-constructor)
-  ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode(int x) : val(x), next(nullptr) {
+  }
+  ListNode(int x, ListNode *next) : val(x), next(next) {
+  }
+
+  ListNode *operator[](std::size_t n) {
+    ListNode *p = this;
+    while (p != nullptr && n > 0) {
+      p = p->next;
+      --n;
+    }
+    if (p == nullptr) {
+      throw std::out_of_range("ListNode index out of range");
+    }
+    return p;
+  }
+
+  const ListNode *operator[](std::size_t n) const {
+    const ListNode *p = this;
+    while (p != nullptr && n > 0) {
+      p = p->next;
+      --n;
+    }
+    if (p == nullptr) {
+      throw std::out_of_range("ListNode index out of range");
+    }
+    return p;
+  }
 };
 
 struct TreeNode {
   int val;
   TreeNode *left;
   TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode() : val(0), left(nullptr), right(nullptr) {
+  }
   // NOLINTNEXTLINE(google-explicit-constructor)
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {
+  }
   TreeNode(int x, TreeNode *left, TreeNode *right)
-      : val(x), left(left), right(right) {}
+      : val(x), left(left), right(right) {
+  }
 
   explicit operator std::vector<std::optional<int>>() const {
     std::vector<std::optional<int>> result;
@@ -56,7 +87,9 @@ struct TreeNode {
     _visualized = false;
     return this;
   }
-  [[nodiscard]] bool visualized() const { return _visualized; }
+  [[nodiscard]] bool visualized() const {
+    return _visualized;
+  }
 
 private:
   bool _visualized = false;
