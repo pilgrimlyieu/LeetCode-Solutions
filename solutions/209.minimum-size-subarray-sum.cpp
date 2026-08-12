@@ -11,9 +11,7 @@ class Solution {
 public:
   int minSubArrayLen(int target, vector<int> &nums) {
     int len = nums.size();
-    int res = len + 1;
-    int sum = 0;
-    int left = 0;
+    int left = 0, sum = 0, res = len + 1;
     for (int right = 0; right < len; right++) {
       sum += nums[right];
       while (sum >= target) {
@@ -28,11 +26,8 @@ public:
 
 int main(void) {
   Solution s;
-  vector<int> v1 = {2, 3, 1, 2, 4, 3};
-  cout << s.minSubArrayLen(7, v1) << endl; // 2
-  vector<int> v2 = {1, 4, 4};
-  cout << s.minSubArrayLen(4, v2) << endl; // 1
-  vector<int> v3 = {1, 1, 1, 1};
-  cout << s.minSubArrayLen(11, v3) << endl; // 0
+  CHECK(s.minSubArrayLen(7, "[2, 3, 1, 2, 4, 3]"_vi), 2);
+  CHECK(s.minSubArrayLen(4, "[1, 4, 4]"_vi), 1);
+  CHECK(s.minSubArrayLen(11, "[1, 1, 1, 1]"_vi), 0);
   return 0;
 }

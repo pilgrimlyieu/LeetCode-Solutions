@@ -11,30 +11,15 @@ class Solution {
 public:
   vector<int> sortedSquares(vector<int> &nums) {
     int len = nums.size();
-    vector<int> res;
-    res.reserve(len);
-    int fir = 0;
-    while (fir < len && nums[fir] < 0) {
-      fir++;
-    }
-    int sec = fir;
-    fir--;
-    while (fir >= 0 && sec < len) {
-      if (abs(nums[fir]) > abs(nums[sec])) {
-        res.push_back(nums[sec] * nums[sec]);
-        sec++;
+    vector<int> res(len);
+    for (int i = 0, j = len - 1, idx = len - 1; i <= j;) {
+      if (abs(nums[i]) > abs(nums[j])) {
+        res[idx--] = nums[i] * nums[i];
+        i++;
       } else {
-        res.push_back(nums[fir] * nums[fir]);
-        fir--;
+        res[idx--] = nums[j] * nums[j];
+        j--;
       }
-    }
-    while (fir >= 0) {
-      res.push_back(nums[fir] * nums[fir]);
-      fir--;
-    }
-    while (sec < len) {
-      res.push_back(nums[sec] * nums[sec]);
-      sec++;
     }
     return res;
   }
@@ -43,11 +28,11 @@ public:
 
 int main(void) {
   Solution s;
-  vector<int> v1 = {-1};
-  cout << s.sortedSquares(v1) << endl; // [1]
-  vector<int> v2 = {1};
-  cout << s.sortedSquares(v2) << endl; // [1]
-  vector<int> v3 = {-1, 2, 2};
-  cout << s.sortedSquares(v3) << endl; // [1, 4, 4]
+  CHECK(s.sortedSquares("[-4,-1,0,3,10]"_vi), "[0,1,9,16,100]"_vi);
+  CHECK(s.sortedSquares("[-7,-3,2,3,11]"_vi), "[4,9,9,49,121]"_vi);
+  CHECK(s.sortedSquares("[-1]"_vi), "[1]"_vi);
+  CHECK(s.sortedSquares("[1]"_vi), "[1]"_vi);
+  CHECK(s.sortedSquares("[-5,-3,-2,-1]"_vi), "[1,4,9,25]"_vi);
+  CHECK(s.sortedSquares("[-1, 2, 2]"_vi), "[1, 4, 4]"_vi);
   return 0;
 }

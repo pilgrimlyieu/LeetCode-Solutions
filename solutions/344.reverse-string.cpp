@@ -20,12 +20,11 @@ public:
 
 int main(void) {
   Solution s;
-  // vector<char> s1 = {'t', 'e', 's', 'a'};
-  // vector<char> s2 = {'t', 'e', 's'};
-  auto s1 = S2V("tesa");
-  auto s2 = S2V("tes");
+  auto s1 = "tesa"_vc;
+  auto s2 = "tes"_vc;
   s.reverseString(s1);
   s.reverseString(s2);
-  cout << s1 << endl << s2 << endl;
+  CHECK(s1, "aset"_vc);
+  CHECK(s2, "set"_vc);
   return 0;
 }

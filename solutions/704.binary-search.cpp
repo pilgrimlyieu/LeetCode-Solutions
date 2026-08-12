@@ -10,28 +10,19 @@ using namespace std;
 class Solution {
 public:
   int search(vector<int> &nums, int target) {
-    int start = 0;
-    int end = nums.size() - 1;
-    while (true) {
-      int idx = (end - start) / 2 + start;
-      if (end - start == 1 && nums[end] == target) {
-        return end;
-      }
-      if (end - start == 1 && nums[start] == target) {
-        return start;
-      }
-      if (nums[start] > target || nums[end] < target || end - start == 1) {
-        return -1;
-      }
-      if (nums[idx] == target) {
-        return idx;
-      }
-      if (nums[idx] > target) {
-        end = idx;
-      } else if (nums[idx] < target) {
-        start = idx;
+    int left = 0, right = nums.size() - 1;
+    while (left <= right) {
+      int mid = (right - left) / 2 + left;
+      int num = nums[mid];
+      if (num == target) {
+        return mid;
+      } else if (num > target) {
+        right = mid - 1;
+      } else {
+        left = mid + 1;
       }
     }
+    return -1;
   }
 };
 // @leet end

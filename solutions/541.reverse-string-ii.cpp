@@ -2,6 +2,7 @@
 // Created: 2025-10-10 11:12:15
 
 #include "../utils.h"
+#include <utility>
 
 using namespace std;
 // @leet imports end
@@ -10,33 +11,20 @@ using namespace std;
 class Solution {
 public:
   string reverseStr(string s, int k) {
-    int len = s.length();
-    string ans = s;
-    int t = 0;
-    for (; t < len / k; t++) {
-      if (t % 2 == 0) {
-        int idx = t * k;
-        for (int i = 0; i < k / 2; i++) {
-          swap(ans[idx + i], ans[idx + k - 1 - i]);
-        }
-      }
+    int len = s.size();
+    for (int i = 0; i < len; i += 2 * k) {
+      reverse(s.begin() + i, s.begin() + min(k + i, len));
     }
-    if (t % 2 == 0) {
-      int idx = t * k;
-      for (int i = 0; i < (len - idx) / 2; i++) {
-        swap(ans[idx + i], ans[len - 1 - i]);
-      }
-    }
-    return ans;
+    return s;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  cout << s.reverseStr("1234", 2) << endl;
-  cout << s.reverseStr("123456", 2) << endl;
-  cout << s.reverseStr("12345678", 2) << endl;
-  cout << s.reverseStr("1234567", 8) << endl;
+  CHECK(s.reverseStr("1234", 2), "2134");
+  CHECK(s.reverseStr("123456", 2), "213465");
+  CHECK(s.reverseStr("12345678", 2), "21346578");
+  CHECK(s.reverseStr("1234567", 8), "7654321");
   return 0;
 }

@@ -13,25 +13,25 @@ public:
     int len = s.size();
     string res;
     res.reserve(len);
-    int p1 = len - 1;
-    int p2 = p1;
-    while (p2 >= 0) {
-      while (p1 >= 0 && s[p1] == ' ') {
-        p1--;
+    int i = len - 1, j = len - 1;
+    while (j >= 0) {
+      while (j >= 0 && s[j] == ' ') {
+        j--;
       }
-      p2 = p1;
-      while (p2 >= 0 && s[p2] != ' ') {
-        p2--;
+      if (j < 0) {
+        break;
       }
-      if (p2 < p1) {
-        for (int i = p2 + 1; i <= p1; i++) {
-          res.push_back(s[i]);
-        }
-        res.push_back(' ');
+      i = j;
+      while (i >= 0 && s[i] != ' ') {
+        i--;
       }
-      p1 = p2;
+      for (int k = i + 1; k <= j; k++) {
+        res.push_back(s[k]);
+      }
+      res.push_back(' ');
+      j = i;
     }
-    res.pop_back(); // 至少要有一个单词
+    res.pop_back();
     return res;
   }
 };
@@ -39,14 +39,14 @@ public:
 
 int main(void) {
   Solution s;
-  cout << s.reverseWords("a") << '|' << endl;
-  cout << s.reverseWords(" abc ") << '|' << endl;
-  cout << s.reverseWords(" abc") << '|' << endl;
-  cout << s.reverseWords("abc ") << '|' << endl;
-  cout << s.reverseWords("abc    def") << '|' << endl;
-  cout << s.reverseWords("   abc   def  ") << '|' << endl;
-  cout << s.reverseWords("the sky is blue") << '|' << endl;
-  cout << s.reverseWords("  hello world  ") << '|' << endl;
-  cout << s.reverseWords("a good   example") << '|' << endl;
+  CHECK(s.reverseWords("a"), "a");
+  CHECK(s.reverseWords(" abc "), "abc");
+  CHECK(s.reverseWords(" abc"), "abc");
+  CHECK(s.reverseWords("abc "), "abc");
+  CHECK(s.reverseWords("abc    def"), "def abc");
+  CHECK(s.reverseWords("   abc   def  "), "def abc");
+  CHECK(s.reverseWords("the sky is blue"), "blue is sky the");
+  CHECK(s.reverseWords("  hello world  "), "world hello");
+  CHECK(s.reverseWords("a good   example"), "example good a");
   return 0;
 }

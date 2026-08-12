@@ -10,55 +10,46 @@ using namespace std;
 class Solution {
 public:
   int removeElement(vector<int> &nums, int val) {
-    int len = nums.size();
-    if (len == 0) {
-      return 0;
-    }
-    if (len == 1) {
-      return nums[0] == val ? 0 : 1;
-    }
-    int fir = 0;
-    int sec = len - 1;
-    while (sec >= fir) {
-      if (nums[fir] != val) {
-        fir++;
-        continue;
-      }
-      while (sec >= 0 && nums[sec] == val) {
-        sec--;
-      }
-      if (sec > fir) {
-        nums[fir] = nums[sec];
-        nums[sec] = val;
+    int left = 0, right = nums.size() - 1;
+    while (left <= right) {
+      if (nums[left] != val) {
+        left++;
+      } else if (nums[right] == val) {
+        right--;
+      } else {
+        nums[left] = nums[right--];
       }
     }
-    return fir;
+    return left;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  vector<int> v1 = {3, 2, 2, 3};
-  cout << s.removeElement(v1, 3) << endl; // 2
-  cout << v1 << endl;                     // [2, 2, 3, 3]
-  vector<int> v2 = {0, 1, 2, 2, 3, 0, 4, 2};
-  cout << s.removeElement(v2, 2) << endl; // 5
-  cout << v2 << endl;                     // [0, 1, 4, 0, 3, 2, 2, 2]
-  vector<int> v3 = {1, 1, 2, 2, 2};
-  cout << s.removeElement(v3, 2) << endl; // 2
-  cout << v3 << endl;                     // [1, 1, 2, 2, 2]
-  vector<int> v4 = {2};
-  cout << s.removeElement(v4, 3) << endl; // 1
-  cout << v4 << endl;                     // [2]
-  vector<int> v5 = {2};
-  cout << s.removeElement(v5, 2) << endl; // 0
-  cout << v5 << endl;                     // []
-  vector<int> v6 = {3, 3};
-  cout << s.removeElement(v6, 3) << endl; // 0
-  cout << v6 << endl;                     // [3, 3]
-  vector<int> v7 = {3, 3};
-  cout << s.removeElement(v7, 5) << endl; // 2
-  cout << v7 << endl;                     // [3, 3]
+  auto v1 = "[3, 2, 2, 3]"_vi;
+  CHECK(s.removeElement(v1, 3), 2);
+  CHECK_FIRSTK_ANYORDER(2, v1, "[2, 2]"_vi);
+  auto v2 = "[0, 1, 2, 2, 3, 0, 4, 2]"_vi;
+  CHECK(s.removeElement(v2, 2), 5);
+  CHECK_FIRSTK_ANYORDER(5, v2, "[0, 1, 4, 0, 3]"_vi);
+  auto v3 = "[1, 1, 2, 2, 2]"_vi;
+  CHECK(s.removeElement(v3, 2), 2);
+  CHECK_FIRSTK_ANYORDER(2, v3, "[1, 1]"_vi);
+  auto v4 = "[2]"_vi;
+  CHECK(s.removeElement(v4, 3), 1);
+  CHECK_FIRSTK_ANYORDER(1, v4, "[2]"_vi);
+  auto v5 = "[2]"_vi;
+  CHECK(s.removeElement(v5, 2), 0);
+  CHECK_FIRSTK_ANYORDER(0, v5, "[]"_vi);
+  auto v6 = "[3, 3]"_vi;
+  CHECK(s.removeElement(v6, 3), 0);
+  CHECK_FIRSTK_ANYORDER(0, v6, "[]"_vi);
+  auto v7 = "[3, 3]"_vi;
+  CHECK(s.removeElement(v7, 5), 2);
+  CHECK_FIRSTK_ANYORDER(2, v7, "[3, 3]"_vi);
+  auto v8 = "[4, 5]"_vi;
+  CHECK(s.removeElement(v8, 4), 1);
+  CHECK_FIRSTK_ANYORDER(1, v8, "[5]"_vi);
   return 0;
 }

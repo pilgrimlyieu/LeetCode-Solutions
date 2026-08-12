@@ -2,6 +2,7 @@
 // Created: 2025-10-01 10:12:58
 
 #include "../utils.h"
+#include <vector>
 
 using namespace std;
 // @leet imports end
@@ -10,40 +11,37 @@ using namespace std;
 class Solution {
 public:
   vector<vector<int>> generateMatrix(int n) {
-    vector<vector<int>> mat(n, vector<int>(n, 0));
-    int h = n;
-    int w = n;
-    int idx = 1;
-    int x = 0;
-    int y = 0;
-    while (h > 0 && w > 0) {
-      mat[x][y] = idx++;
-      for (int i = 0; i < w - 1; i++) {
-        mat[y][++x] = idx++;
+    vector<vector<int>> res(n, vector<int>(n));
+    int t = 0, b = n - 1, l = 0, r = n - 1, idx = 1;
+    while (idx <= n * n) {
+      for (int i = l; i <= r; i++) {
+        res[t][i] = idx++;
       }
-      for (int i = 0; i < h - 1; i++) {
-        mat[++y][x] = idx++;
+      t++;
+      for (int j = t; j <= b; j++) {
+        res[j][r] = idx++;
       }
-      for (int i = 0; i < w - 1; i++) {
-        mat[y][--x] = idx++;
+      r--;
+      for (int i = r; i >= l; i--) {
+        res[b][i] = idx++;
       }
-      for (int i = 0; i < w - 2; i++) {
-        mat[--y][x] = idx++;
+      b--;
+      for (int j = b; j >= t; j--) {
+        res[j][l] = idx++;
       }
-      x++;
-      h -= 2;
-      w -= 2;
+      l++;
     }
-    return mat;
+    return res;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  cout << s.generateMatrix(1) << endl;
-  cout << s.generateMatrix(2) << endl;
-  cout << s.generateMatrix(3) << endl;
-  cout << s.generateMatrix(4) << endl;
+  CHECK(s.generateMatrix(1), "[[1]]"_vvi);
+  CHECK(s.generateMatrix(2), "[[1, 2], [4, 3]]"_vvi);
+  CHECK(s.generateMatrix(3), "[[1, 2, 3], [8, 9, 4], [7, 6, 5]]"_vvi);
+  CHECK(s.generateMatrix(4),
+        "[[1, 2, 3, 4], [12, 13, 14, 5], [11, 16, 15, 6], [10, 9, 8, 7]]"_vvi);
   return 0;
 }
