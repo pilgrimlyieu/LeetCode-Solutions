@@ -21,3 +21,6 @@ cmake-build-*/
 
 # Scratch
 test.cpp
+
+# Anki 制卡子仓库（独立 jj 仓库）
+/anki/

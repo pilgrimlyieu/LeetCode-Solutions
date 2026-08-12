@@ -33,11 +33,11 @@ def main() -> int:
         print("working copy 中没有 solutions/*.cpp 改动", file=sys.stderr)
         return 1
     ids = [re.match(r"(\d+)", f.name).group(1) for f in files]  # type: ignore[union-attr]
-    today = date.today().strftime("%m.%d")
-    msg = f"W?D?({len(ids)})[{today}]: 完成 T{', '.join(ids)}"
+    today = date.today().isoformat()
+    msg = f"{today}({len(ids)}): 完成 T{', '.join(ids)}"
     print("预填提交信息：", msg)
     print("完成顺序（mtime）：", " → ".join(f.name for f in files))
-    # -m 预填后仍开编辑器供修改 W?D?：jj 用 --editor 强制进编辑器
+    # -m 预填后仍开编辑器供修改
     subprocess.run(["jj", "commit", "--editor", "-m", msg], cwd=ROOT, check=True)
     return 0
 

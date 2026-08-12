@@ -32,10 +32,18 @@ inline bool use_color() {
   static const bool tty = isatty(fileno(stdout)) != 0;
   return tty;
 }
-inline const char *c_green() { return use_color() ? "\033[32m" : ""; }
-inline const char *c_red() { return use_color() ? "\033[31m" : ""; }
-inline const char *c_dim() { return use_color() ? "\033[2m" : ""; }
-inline const char *c_reset() { return use_color() ? "\033[0m" : ""; }
+inline const char *c_green() {
+  return use_color() ? "\033[32m" : "";
+}
+inline const char *c_red() {
+  return use_color() ? "\033[31m" : "";
+}
+inline const char *c_dim() {
+  return use_color() ? "\033[2m" : "";
+}
+inline const char *c_reset() {
+  return use_color() ? "\033[0m" : "";
+}
 
 template <typename T> std::string stringify(const T &value) {
   std::ostringstream oss;
@@ -137,6 +145,14 @@ void check_firstk(const char *file, int line, long long k, const V &vec,
   std::vector<Elem> prefix(std::begin(vec), std::begin(vec) + count);
   check(file, line, "k=" + std::to_string(k), prefix, expected);
 }
+template <typename V, typename E>
+void check_firstk_anyorder(const char *file, int line, long long k, V vec,
+                           E expected) {
+  using Elem = std::decay_t<decltype(*std::begin(vec))>;
+  auto count = std::clamp<long long>(k, 0, static_cast<long long>(vec.size()));
+  std::vector<Elem> prefix(std::begin(vec), std::begin(vec) + count);
+  check_anyorder(file, line, "k=" + std::to_string(k), prefix, expected);
+}
 
 } // namespace lc_check
 
@@ -154,3 +170,6 @@ void check_firstk(const char *file, int line, long long k, const V &vec,
 // 返回 k、取前 k 个：k_call 求值一次
 #define CHECK_FIRSTK(k_call, vec, expected)                                    \
   lc_check::check_firstk(__FILE__, __LINE__, (k_call), (vec), (expected))
+#define CHECK_FIRSTK_ANYORDER(k_call, vec, expected)                           \
+  lc_check::check_firstk_anyorder(__FILE__, __LINE__, (k_call), (vec),         \
+                                  (expected))
