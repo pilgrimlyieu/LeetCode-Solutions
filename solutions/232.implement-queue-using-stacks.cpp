@@ -2,45 +2,47 @@
 // Created: 2025-10-15 10:51:41
 
 #include "../utils.h"
+#include <stack>
 
 using namespace std;
 // @leet imports end
 
 // @leet start
 class MyQueue {
-  stack<int> s1;
-  stack<int> s2;
-  int len = 0;
-
 public:
+  stack<int> inStk;
+  stack<int> outStk;
+
   MyQueue() {}
 
-  void push(int x) { s2.push(x); }
+  void push(int x) {
+    inStk.push(x);
+  }
 
   int pop() {
-    if (s1.empty()) {
-      while (!s2.empty()) {
-        s1.push(s2.top());
-        s2.pop();
-      }
-    }
-    int res = s1.top();
-    s1.pop();
+    shake();
+    int res = outStk.top();
+    outStk.pop();
     return res;
   }
 
   int peek() {
-    if (s1.empty()) {
-      while (!s2.empty()) {
-        s1.push(s2.top());
-        s2.pop();
-      }
-    }
-    int res = s1.top();
-    return res;
+    shake();
+    return outStk.top();
   }
 
-  bool empty() { return s1.empty() && s2.empty(); }
+  bool empty() {
+    return inStk.empty() && outStk.empty();
+  }
+
+  void shake() {
+    if (outStk.empty()) {
+      while (!inStk.empty()) {
+        outStk.push(inStk.top());
+        inStk.pop();
+      }
+    }
+  }
 };
 
 /**
@@ -55,6 +57,5 @@ public:
 
 int main(void) {
   MyQueue q;
-
   return 0;
 }

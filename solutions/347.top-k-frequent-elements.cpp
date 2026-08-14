@@ -10,30 +10,56 @@ using namespace std;
 class Solution {
 public:
   vector<int> topKFrequent(vector<int> &nums, int k) {
-    sort(nums.begin(), nums.end());
-    int idx = 0;
-    int len = nums.size();
-    vector<int> res;
-    res.reserve(k);
-    priority_queue<pair<int, int>> pq;
-    while (idx < len) {
-      int cur = idx;
-      while (idx < len && nums[idx] == nums[cur]) {
-        idx++;
-      }
-      pq.emplace(idx - cur, nums[cur]);
+    unordered_map<int, int> freq;
+    vector<int> ans;
+    ans.reserve(k);
+    for (auto num : nums) {
+      freq[num]++;
     }
-    for (int i = 0; i < k; i++) {
-      res.emplace_back(pq.top().second);
+    using P = pair<int, int>;
+    auto cmp = [](P a, P b) { return a.first > b.first; };
+    priority_queue<P, vector<P>, decltype(cmp)> pq(cmp); // 小根堆
+    for (auto p : freq) {
+      pq.emplace(p.second, p.first);
+      if (pq.size() > k) {
+        pq.pop();
+      }
+    }
+    while (!pq.empty()) {
+      ans.push_back(pq.top().second);
       pq.pop();
     }
-    return res;
+    return ans;
   }
 };
 // @leet end
 
+/// 桶排序，理论更优
+vector<int> topKFrequent(vector<int> &nums, int k) {
+  int n = nums.size();
+  unordered_map<int, int> freq;
+  vector<int> ans;
+  ans.reserve(k);
+  for (auto num : nums) {
+    freq[num]++;
+  }
+  vector<vector<int>> bkt(n + 1);
+  for (auto p : freq) {
+    bkt[p.second].push_back(p.first);
+  }
+  for (int i = n; i >= 1; i--) {
+    for (auto v : bkt[i]) {
+      ans.push_back(v);
+      if (ans.size() == k) {
+        return ans;
+      }
+    }
+  }
+  return ans; // __builtin_unreachable();
+}
+
 int main(void) {
   Solution s;
-  cout << s.topKFrequent("[1,1,2,3,4,5,5]"_vi, 2) << endl;
+  CHECK_ANYORDER(s.topKFrequent("[1,1,2,3,4,5,5]"_vi, 2), "[1,5]"_vi);
   return 0;
 }

@@ -2,6 +2,7 @@
 // Created: 2025-10-08 11:08:01
 
 #include "../utils.h"
+#include <unordered_map>
 
 using namespace std;
 // @leet imports end
@@ -11,44 +12,31 @@ class Solution {
 public:
   int fourSumCount(vector<int> &nums1, vector<int> &nums2, vector<int> &nums3,
                    vector<int> &nums4) {
-    unordered_map<int, int> mp1;
-    unordered_map<int, int> mp2;
-    unordered_map<int, int> mp3;
-    unordered_map<int, int> mp4;
-    auto initf = [&](unordered_map<int, int> &mp, vector<int> &nums) {
-      for (auto i : nums) {
-        if (mp.find(i) == mp.end()) {
-          mp[i] = 1;
-        } else {
-          mp[i]++;
-        }
-      }
-    };
-    initf(mp1, nums1);
-    initf(mp2, nums2);
-    initf(mp3, nums3);
-    initf(mp4, nums4);
-    int res = 0;
-    for (auto p1 : mp1) {
-      for (auto p2 : mp2) {
-        for (auto p3 : mp3) {
-          auto p4f = mp4.find(-p1.first - p2.first - p3.first);
-          if (p4f != mp4.end()) {
-            res += p1.second * p2.second * p3.second * p4f->second;
-          }
-        }
+    int ans = 0;
+    unordered_map<int, int> mp;
+    for (auto n1 : nums1) {
+      for (auto n2 : nums2) {
+        mp[n1 + n2]++;
       }
     }
-    return res;
+    for (auto n3 : nums3) {
+      for (auto n4 : nums4) {
+        auto it = mp.find(-n3 - n4);
+        if (it != mp.end()) {
+          ans += it->second;
+        }
+        // 可以直接 ans += mp[-n3 - n4]，不过依赖非直觉行为，谨慎使用
+      }
+    }
+    return ans;
   }
 };
 // @leet end
 
 int main(void) {
   Solution s;
-  cout << s.fourSumCount("[1,2]"_vi, "[-2,-1]"_vi, "[-1,2]"_vi, "[0,2]"_vi)
-       << endl;
-  cout << s.fourSumCount("[0]"_vi, "[0]"_vi, "[0]"_vi, "[0]"_vi) << endl;
-  cout << s.fourSumCount("[0,1]"_vi, "[0,-1]"_vi, "[0]"_vi, "[0]"_vi) << endl;
+  CHECK(s.fourSumCount("[1,2]"_vi, "[-2,-1]"_vi, "[-1,2]"_vi, "[0,2]"_vi), 2);
+  CHECK(s.fourSumCount("[0]"_vi, "[0]"_vi, "[0]"_vi, "[0]"_vi), 1);
+  CHECK(s.fourSumCount("[0,1]"_vi, "[0,-1]"_vi, "[0]"_vi, "[0]"_vi), 2);
   return 0;
 }

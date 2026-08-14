@@ -2,6 +2,7 @@
 // Created: 2025-09-12 23:16:19
 
 #include "../utils.h"
+#include <algorithm>
 
 using namespace std;
 // @leet imports end
@@ -10,27 +11,17 @@ using namespace std;
 class Solution {
 public:
   bool isAnagram(string s, string t) {
-    unordered_map<char, int> mp;
-    for (auto c : s) {
-      if (mp.find(c) == mp.end()) {
-        mp[c] = 1;
-      } else {
-        mp[c]++;
-      }
+    int ab[26] = {0};
+    for (auto ch : s) {
+      ab[ch - 'a']++;
     }
-    for (auto c : t) {
-      if (mp.find(c) == mp.end()) {
-        return false;
-      } else {
-        mp[c]--;
-      }
+    // 也可以初始时比较字符串长度，减的时候注意有没有变负数
+    for (auto ch : t) {
+      ab[ch - 'a']--;
     }
-    for (auto i : mp) {
-      if (i.second != 0) {
-        return false;
-      }
-    }
-    return true;
+    return all_of(ab, ab + 26, [](int a) { return a == 0; });
+    // 也可以用 std::{begin, end} 语义更清晰
+    // 但对于作为函数参数且退化成指针的情形则不行
   }
 };
 // @leet end

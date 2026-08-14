@@ -2,6 +2,7 @@
 // Created: 2025-10-08 10:41:07
 
 #include "../utils.h"
+#include <vector>
 
 using namespace std;
 // @leet imports end
@@ -10,23 +11,15 @@ using namespace std;
 class Solution {
 public:
   vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
-    vector<int> res;
-    res.reserve(1000);
-    unordered_map<int, int> mp;
-    for (auto i : nums1) {
-      mp[i] = 0;
-    }
-    for (auto i : nums2) {
-      if (mp.find(i) != mp.end()) {
-        mp[i] = 1;
+    unordered_set<int> bkt(nums1.begin(), nums1.end());
+    vector<int> ans;
+    ans.reserve(min(nums1.size(), nums2.size()));
+    for (auto n : nums2) {
+      if (bkt.erase(n)) {
+        ans.push_back(n);
       }
     }
-    for (auto p : mp) {
-      if (p.second == 1) {
-        res.emplace_back(p.first);
-      }
-    }
-    return res;
+    return ans;
   }
 };
 // @leet end
