@@ -16,6 +16,9 @@ cmake-build-*/
 *.a
 *.so
 
+# Python
+__pycache__/
+
 # leetcode.nvim 题面缓存等
 **/doc/**
 

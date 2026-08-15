@@ -79,6 +79,10 @@ test-utils:
     {{ cxx }} {{ flags }} {{ san }} scripts/test_check.cpp -o "{{ build }}/test_check"
     ASAN_OPTIONS=detect_leaks=0 "{{ build }}/test_check"
 
+# CHECK 生成器（scripts/gen_checks.py）单测
+test-gen:
+    @cd scripts && python3 test_gen_checks.py
+
 # 重生成 README 进度表
 stats:
     @python3 scripts/stats.py
