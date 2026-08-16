@@ -53,9 +53,13 @@ public:
       return x == 0 && y == 0 && current_direction == origin_direction;
     }
 
-    bool noMoves() { return moves == 0; }
+    bool noMoves() {
+      return moves == 0;
+    }
 
-    pair<int, int> getCoordinates() const { return {x, y}; }
+    pair<int, int> getCoordinates() const {
+      return {x, y};
+    }
   };
 
   bool isRobotBounded(string instructions) {

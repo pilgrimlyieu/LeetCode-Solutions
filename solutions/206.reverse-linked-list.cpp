@@ -33,6 +33,12 @@ public:
 };
 // @leet end
 
+// @card idea
+// 以 `curr` 为中心，记录 `next`，并反转 `prev` 与 `curr` 之间的箭头方向。
+
+// @card note
+// 将 `prev` 设为空指针即代表开始的情形，避免特判。
+
 int main(void) {
   Solution s;
   CHECK(s.reverseList("[1,2,3,4,5]"_list), "[5,4,3,2,1]"_list);

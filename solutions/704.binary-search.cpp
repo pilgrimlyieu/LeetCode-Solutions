@@ -27,6 +27,12 @@ public:
 };
 // @leet end
 
+// @card idea
+// 注意二分后移动边界，避免出现区间不缩小的情况。
+
+// @card note
+// 还有 `(left + right) / 2` 的防溢出写法 `(right - left) / 2 + left`。
+
 int main(void) {
   Solution s;
   vector<int> v1 = {2, 5};

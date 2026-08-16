@@ -53,27 +53,42 @@ public:
 };
 // @leet end
 
-void dfs(vector<int> &ans, TreeNode *node, int depth) {
-  if (!node) {
-    return;
-  }
-  if (depth == ans.size()) {
-    ans.push_back(node->val);
+// @card idea 迭代 BFS
+// 依旧是队列从层的角度考虑。
+
+// @alt 递归 DFS（右先序）
+// 选择从右子树开始递归，每层第一个到达的节点即右视图节点（辅助函数 `dfs` 随块展示）。
+class SolutionDFS {
+public:
+  void dfs(vector<int> &ans, TreeNode *node, int depth) {
+    if (!node) {
+      return;
+    }
+    if (depth == ans.size()) {
+      ans.push_back(node->val);
+    }
+
+    dfs(ans, node->right, depth + 1);
+    dfs(ans, node->left, depth + 1);
   }
 
-  dfs(ans, node->right, depth + 1);
-  dfs(ans, node->left, depth + 1);
-}
-
-vector<int> rightSideView(TreeNode *root) {
-  vector<int> ans;
-  dfs(ans, root, 0);
-  return ans;
-}
+  vector<int> rightSideView(TreeNode *root) {
+    vector<int> ans;
+    dfs(ans, root, 0);
+    return ans;
+  }
+};
+// @alt end
 
 int main() {
   Solution s;
+  SolutionDFS s2;
   // CHECK(s.method("[1,2,3]"_vi), "[1,2]"_vi);
-
+  CHECK(s.rightSideView("[1,2,3,null,5,null,4]"_tree), "[1,3,4]"_vi);
+  CHECK(s.rightSideView("[1,2,3,4]"_tree), "[1,3,4]"_vi);
+  CHECK(s.rightSideView("[]"_tree), "[]"_vi);
+  CHECK(s2.rightSideView("[1,2,3,null,5,null,4]"_tree), "[1,3,4]"_vi);
+  CHECK(s2.rightSideView("[1,2,3,4]"_tree), "[1,3,4]"_vi);
+  CHECK(s2.rightSideView("[]"_tree), "[]"_vi);
   return 0;
 }

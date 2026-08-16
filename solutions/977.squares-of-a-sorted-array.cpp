@@ -26,6 +26,12 @@ public:
 };
 // @leet end
 
+// @card idea
+// 换个思路，若要从小到大填充数组需要先确定零界点，若是从大到小填充则可以直接从两界双指针开始。
+
+// @card note
+// `if` 条件可以换成 `-nums[i] > nums[j]`，因为 `nums` 已是升序。
+
 int main(void) {
   Solution s;
   CHECK(s.sortedSquares("[-4,-1,0,3,10]"_vi), "[0,1,9,16,100]"_vi);

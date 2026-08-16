@@ -41,6 +41,21 @@ public:
 };
 // @leet end
 
+// @card hint
+// KMP 算法
+
+// @card idea
+// 使用 `next` 数组构造避免原串指针 `i` 回溯，而匹配串指针 `j` 则回溯到最后一个匹配字符对应的 `next` 值。
+//
+// `next` 数组的含义即，到该位的前缀字符串的最长公共前后缀长度，在后缀匹配失败时，可以直接跳过前缀的匹配继续。
+
+// @card note
+// 注意 `i` 不代表原串中匹配串的起点，因此要持续匹配到 `hlen` 而非 `hlen - nlen`。
+//
+// `j` 只用最初初始化，而不用每次循环重新初始化，因为上一轮循环最后赋值的时候就保证了 `j = next[i - 1]`。
+//
+// 两处 `while` 之后的判等是为了检查当前这个新字符是否匹配上了前缀的下一个字符。
+
 int main(void) {
   Solution s;
   CHECK(s.strStr("abacababacababc", "abacababc"), 6);

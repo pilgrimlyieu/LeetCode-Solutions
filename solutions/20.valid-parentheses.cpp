@@ -33,6 +33,9 @@ public:
 };
 // @leet end
 
+// @card hint
+// 考虑使用 `unordered_map` 的写法（尽管没必要，无复用）。
+
 int main(void) {
   Solution s;
   CHECK(s.isValid("()"), true);

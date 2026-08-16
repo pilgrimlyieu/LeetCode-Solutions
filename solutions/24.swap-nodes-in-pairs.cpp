@@ -44,6 +44,12 @@ public:
 };
 // @leet end
 
+// @card idea
+// 每次以 `curr` 为中心，预先保存 `next`，交换 `prev`, `curr`，然后移动 `curr`。
+
+// @card note
+// 这里没有用哨兵节点，于是需要预先记录初始结果。
+
 int main(void) {
   Solution s;
   CHECK(s.swapPairs("[]"_list), "[]"_list);

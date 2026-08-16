@@ -24,6 +24,9 @@ public:
 };
 // @leet end
 
+// @card idea
+// 滑动窗口弹性伸缩，窗口先往右扩展，达到目标后再尝试缩减左边界。
+
 int main(void) {
   Solution s;
   CHECK(s.minSubArrayLen(7, "[2, 3, 1, 2, 4, 3]"_vi), 2);

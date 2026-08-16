@@ -26,6 +26,9 @@ public:
 };
 // @leet end
 
+// @card note
+// 主要是学习 `<algorithm>` 库中一些函数，如 `all_of`。
+
 int main(void) {
   Solution s;
 

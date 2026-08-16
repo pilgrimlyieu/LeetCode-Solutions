@@ -20,6 +20,9 @@ public:
 };
 // @leet end
 
+// @card note
+// 主要就是学一下 `reverse`，以及放心大胆用 `min` 等让代码更清晰。
+
 int main(void) {
   Solution s;
   CHECK(s.reverseStr("1234", 2), "2134");

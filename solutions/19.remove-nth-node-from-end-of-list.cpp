@@ -36,6 +36,12 @@ public:
 };
 // @leet end
 
+// @card idea
+// 先后指针，间距为 `n`。
+
+// @card note
+// 链表题还是不要排斥哨兵节点为宜，处理头节点不用特判，方便得多。
+
 int main(void) {
   Solution s;
   CHECK(s.removeNthFromEnd("[1,2,3,4,5]"_list, 2), "[1,2,3,5]"_list);

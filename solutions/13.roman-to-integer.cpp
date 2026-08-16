@@ -30,7 +30,9 @@ public:
     }
   }
 
-  bool rComp(char a, char b) { return getNum(a) > getNum(b); }
+  bool rComp(char a, char b) {
+    return getNum(a) > getNum(b);
+  }
 
   int romanToInt(string s) {
     int len = s.length();

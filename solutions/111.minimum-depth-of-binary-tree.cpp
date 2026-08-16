@@ -36,6 +36,9 @@ public:
 };
 // @leet end
 
+// @card note
+// `else` 分支有一个值非零，使用 `max` 取非零的那个。
+
 int main() {
   Solution s;
   CHECK(s.minDepth("[3,9,20,null,null,15,7]"_tree), 2);

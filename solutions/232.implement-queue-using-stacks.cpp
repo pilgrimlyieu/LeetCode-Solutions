@@ -55,6 +55,9 @@ public:
  */
 // @leet end
 
+// @card idea
+// 将两个栈分别作为输入和输出栈即可。
+
 int main(void) {
   MyQueue q;
   return 0;

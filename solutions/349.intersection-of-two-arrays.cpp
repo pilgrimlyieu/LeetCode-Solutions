@@ -24,6 +24,9 @@ public:
 };
 // @leet end
 
+// @card note
+// 主要注意 `unordered_set` 等容器可以直接从 `vector` 等容器初始化而来，同时 `erase` 函数可同时用来检测与移除（这是简写，实际上为了清晰可以分开）。
+
 int main(void) {
   Solution s;
 

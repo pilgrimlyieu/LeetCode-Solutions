@@ -9,9 +9,13 @@ using namespace std;
 // @leet start
 class Solution {
 public:
-  int toNum(char c) { return c - '0'; }
+  int toNum(char c) {
+    return c - '0';
+  }
 
-  char toChar(int b) { return b + '0'; }
+  char toChar(int b) {
+    return b + '0';
+  }
 
   string addBinary(string a, string b) {
     int len1 = a.length();

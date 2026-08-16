@@ -36,6 +36,9 @@ public:
 };
 // @leet end
 
+// @card idea
+// 使用 `t`(top), `b`(bottom), `l`(left), `r`(right) 四个变量追踪边界。
+
 int main(void) {
   Solution s;
   CHECK(s.generateMatrix(1), "[[1]]"_vvi);
