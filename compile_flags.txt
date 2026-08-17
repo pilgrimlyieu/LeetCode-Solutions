@@ -1,4 +1,6 @@
--std=c++17
+-std=c++23
+-O1
 -Wall
 -Wextra
 -Wno-unused-variable
+-Wmaybe-uninitialized
