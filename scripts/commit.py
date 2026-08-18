@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""半自动 jj 提交：按 mtime 排序本次完成的题目，预填提交信息。用法：just commit"""
+"""半自动 jj 提交：按 ctime 排序本次完成的题目，预填提交信息。用法：just commit"""
 
 import re
 import subprocess
@@ -23,8 +23,8 @@ def changed_solutions() -> list[Path]:
         p = ROOT / line.strip()
         if p.suffix == ".cpp" and p.parent.name == "solutions" and p.exists():
             files.append(p)
-    # 按 mtime 升序 = 实际完成顺序
-    return sorted(files, key=lambda p: p.stat().st_mtime)
+    # 按 ctime 升序 = 实际完成顺序
+    return sorted(files, key=lambda p: p.stat().st_ctime)
 
 
 def main() -> int:
@@ -36,7 +36,7 @@ def main() -> int:
     today = date.today().isoformat()
     msg = f"{today}({len(ids)}): 完成 T{', '.join(ids)}"
     print("预填提交信息：", msg)
-    print("完成顺序（mtime）：", " → ".join(f.name for f in files))
+    print("完成顺序（ctime）：", " → ".join(f.name for f in files))
     # -m 预填后仍开编辑器供修改
     subprocess.run(["jj", "commit", "--editor", "-m", msg], cwd=ROOT, check=True)
     return 0
