@@ -25,6 +25,9 @@ public:
 };
 // @leet end
 
+// @card hint
+// which bound?
+
 // @card note
 // 本质上是考二分或牛顿迭代法。二分上下界直接用 `[0, x]` 即可，这里只是利用位运算给了一个更精细的初始界。
 //

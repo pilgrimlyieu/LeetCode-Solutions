@@ -43,7 +43,7 @@ public:
 // @leet end
 
 // @card idea
-// `lower_bound` 寻找第一个 `<= target` 的元素，`upper_bound` 寻找第一个 `< target` 的元素。二者的区别就在于里面的缩小区间条件分别是 `<` 和 `<=` 时。
+// `lower_bound` 寻找第一个 `>= target` 的元素，`upper_bound` 寻找第一个 `> target` 的元素。二者的区别就在于里面的缩小区间条件分别是 `<` 和 `<=` 时。
 
 // @card note
 // 二分查找：

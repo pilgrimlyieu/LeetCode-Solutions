@@ -41,7 +41,7 @@ public:
 // 使用一个封装好的 `get` 函数避免处理复杂的边界问题。如果是 ACM 风格，可以在处理数据的时候就额外添加哨兵值。
 
 // @alt 爬坡法
-// 一开始是上坡，因此其实就是二分找下坡点。
+// 一开始是上坡，因此其实就是二分找下坡点。需要注意这里的 `right` 初值。
 class SolutionClimbing {
 public:
   int findPeakElement(vector<int> &nums) {
@@ -60,7 +60,7 @@ public:
 // @alt end
 
 // @card note
-// 由于可能出现 `INT_MIN`，要么就是
+// 由于可能出现 `INT_MIN`，要么使用 `LONG_MIN`，要么用 `pair`：
 //
 // ```cpp
 // auto get = [&](int i) -> pair<int, int> {

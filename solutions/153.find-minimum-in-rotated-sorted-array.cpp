@@ -25,7 +25,7 @@ public:
 // @leet end
 
 // @card idea
-// 找第一个小于最后一个值的值（使用 lower bound。
+// 找第一个小于最后一个值的值（使用 lower bound）。
 
 int main() {
   Solution s;
