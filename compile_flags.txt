@@ -4,3 +4,4 @@
 -Wextra
 -Wno-unused-variable
 -Wmaybe-uninitialized
+-Wno-comment
