@@ -5,3 +5,4 @@
 -Wno-unused-variable
 -Wmaybe-uninitialized
 -Wno-comment
+-Wno-sign-compare
