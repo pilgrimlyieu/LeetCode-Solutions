@@ -61,7 +61,7 @@ public:
 class SolutionHash {
 public:
   int findLength(vector<int> &nums1, vector<int> &nums2) {
-    return 0; // TODO
+    return 0; // TODO:
   }
 };
 // @alt end

@@ -5,8 +5,8 @@
 #   just build-all      全量编译回归
 #   just stats          重生成 README 进度表
 #   just note 239       从模板创建 Typst 笔记
-#   just commit         半自动 jj 提交（按 mtime 排序完成列表）
-#   just anki push     制作/更新 Anki 卡片（子模块，见 anki/justfile）
+#   just commit         更新进度并半自动 jj 提交（按 ctime 排序完成列表）
+#   just anki push      制作/更新 Anki 卡片（子模块，见 anki/justfile）
 
 # Anki 制卡子模块（anki/ 为独立 jj 仓库，根仓库不追踪）
 mod? anki
@@ -48,9 +48,6 @@ run F:
     {{ cxx }} {{ flags }} {{ san }} "$src" -o "$out"
     ASAN_OPTIONS=detect_leaks=0 "$out"
 
-# check 是 run 的语义化别名（CHECK 失败即非零退出，供脚本判定）
-check F: (run F)
-
 # 无 sanitizer 编译供 gdb/DAP；stdout 最后一行为产物路径（nvim 键位读取）
 debug F:
     #!/usr/bin/env zsh
@@ -91,6 +88,6 @@ stats:
 note F:
     @python3 scripts/note.py "{{ F }}"
 
-# 半自动 jj 提交（完成列表按 mtime 排序，编辑器内补 W?D?）
-commit:
+# 半自动 jj 提交
+commit: stats
     @python3 scripts/commit.py
