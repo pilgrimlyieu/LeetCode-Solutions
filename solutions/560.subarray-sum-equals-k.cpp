@@ -32,7 +32,7 @@ public:
 // 固定一个 `j`，要寻找前面前缀和为 `k - prefixSum[j]` 的次数。
 
 // @card note
-// 还是检查一下是否存在为宜（C++20 的`contains` 或 `find`），不存在的情况会插入浪费大量时间与空间。
+// 还是检查一下是否存在为宜（`find` 或 C++20 的`contains`），不存在的情况会插入浪费大量时间与空间。
 
 // @alt 暴力枚举
 class SolutionEnumeration {

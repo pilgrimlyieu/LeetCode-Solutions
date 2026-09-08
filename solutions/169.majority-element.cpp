@@ -26,7 +26,7 @@ public:
 };
 // @leet end
 
-// @card hint Boyer-Moore 投票算法
+// @card idea Boyer-Moore 投票算法
 // 每次从序列中抵消任意两个不同的数字，绝对多数最终会剩下来。
 
 // @alt k-th

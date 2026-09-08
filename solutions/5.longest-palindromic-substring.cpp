@@ -14,7 +14,7 @@ public:
     int n = s.length(), maxLen = 0, start = 0;
     vector<int> dp(n);
     for (int i = 0, l = 0, r = -1; i < n; i++) {
-      int k = (i > r) ? 1 : min(dp[l + r - i], r - i + 1);
+      int k = (i > r) ? 1 : min(dp[l + r - i], r - i + 1); // 奇数长度至少是 1
       while (i - k >= 0 && i + k < n && s[i - k] == s[i + k]) {
         k++;
       }
@@ -29,7 +29,7 @@ public:
       }
     }
     for (int i = 0, l = 0, r = -1; i < n; i++) {
-      int k = (i > r) ? 0 : min(dp[l + r - i + 1], r - i + 1);
+      int k = (i > r) ? 0 : min(dp[l + r - i + 1], r - i + 1); // 注意这里是 0
       while (i - 1 - k >= 0 && i + k < n && s[i - 1 - k] == s[i + k]) {
         k++;
       }
@@ -51,7 +51,7 @@ public:
 // @card idea Manacher
 // 需要注意（更新后的）`k` 与 `dp[i]` 的含义：
 // 1. `k` 用以标识边界，但要注意 `k = 0` 时其实已经有初始串了，对奇数串是 1，对偶数串是 2；
-// 2. `r = dp[i]` 是有效半径长（包含中心），因此对奇数长度，子串长度为 `2r-1`，对偶数长度，字串长度为 `2r`；
+// 2. `R = dp[i]` 是有效半径长（包含中心），因此对奇数长度，子串长度为 `2R-1`，对偶数长度，字串长度为 `2R`；
 // 3. 也可以直接观察两种情形左右边界分别是 `[i-k, i+k]` 与 `[i-1-k,i+k]`，长度分别是 `2k+1`, `2k+2`。
 
 // @alt 中心扩展法
@@ -80,6 +80,9 @@ public:
   }
 };
 // @alt end
+
+// @card note
+// 取 `min` 是因为这部分是有效的对称区域。
 
 int main() {
   Solution s;

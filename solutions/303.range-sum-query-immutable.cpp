@@ -13,7 +13,7 @@ public:
   vector<int> prefixSum;
 
   NumArray(vector<int> &nums) {
-    prefixSum.reserve(nums.size());
+    prefixSum.reserve(nums.size() + 1);
     prefixSum.push_back(0);
     for (int sum = 0; auto num : nums) {
       sum += num;
