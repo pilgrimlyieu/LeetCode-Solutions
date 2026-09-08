@@ -2,7 +2,7 @@
 
 个人 LeetCode 题解（C++，leetcode.cn）。环境：WSL + Neovim + [leetcode.nvim](https://github.com/kawre/leetcode.nvim)，本地工具链见 `justfile`。
 
-- 已完成：**179** 题（更新于 2026-09-07）
+- 已完成：**195** 题（更新于 2026-09-08）
 
 | # | 题目 | 难度 | 题解 | 笔记 |
 |--:|------|------|------|------|
@@ -70,6 +70,8 @@
 | 121 | [买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/) | 🟢 简单 | [代码](solutions/121.best-time-to-buy-and-sell-stock.cpp) |  |
 | 122 | [买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/) | 🟡 中等 | [代码](solutions/122.best-time-to-buy-and-sell-stock-ii.cpp) |  |
 | 123 | [买卖股票的最佳时机 III](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/) | 🔴 困难 | [代码](solutions/123.best-time-to-buy-and-sell-stock-iii.cpp) |  |
+| 127 | [单词接龙](https://leetcode.cn/problems/word-ladder/) | 🔴 困难 | [代码](solutions/127.word-ladder.cpp) |  |
+| 130 | [被围绕的区域](https://leetcode.cn/problems/surrounded-regions/) | 🟡 中等 | [代码](solutions/130.surrounded-regions.cpp) |  |
 | 131 | [分割回文串](https://leetcode.cn/problems/palindrome-partitioning/) | 🟡 中等 | [代码](solutions/131.palindrome-partitioning.cpp) |  |
 | 134 | [加油站](https://leetcode.cn/problems/gas-station/) | 🟡 中等 | [代码](solutions/134.gas-station.cpp) |  |
 | 135 | [分发糖果](https://leetcode.cn/problems/candy/) | 🔴 困难 | [代码](solutions/135.candy.cpp) |  |
@@ -88,10 +90,13 @@
 | 169 | [多数元素](https://leetcode.cn/problems/majority-element/) | 🟢 简单 | [代码](solutions/169.majority-element.cpp) |  |
 | 198 | [打家劫舍](https://leetcode.cn/problems/house-robber/) | 🟡 中等 | [代码](solutions/198.house-robber.cpp) |  |
 | 199 | [二叉树的右视图](https://leetcode.cn/problems/binary-tree-right-side-view/) | 🟡 中等 | [代码](solutions/199.binary-tree-right-side-view.cpp) |  |
+| 200 | [岛屿数量](https://leetcode.cn/problems/number-of-islands/) | 🟡 中等 | [代码](solutions/200.number-of-islands.cpp) |  |
 | 202 | [快乐数](https://leetcode.cn/problems/happy-number/) | 🟢 简单 | [代码](solutions/202.happy-number.cpp) |  |
 | 203 | [移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/) | 🟢 简单 | [代码](solutions/203.remove-linked-list-elements.cpp) |  |
 | 206 | [反转链表](https://leetcode.cn/problems/reverse-linked-list/) | 🟢 简单 | [代码](solutions/206.reverse-linked-list.cpp) |  |
+| 207 | [课程表](https://leetcode.cn/problems/course-schedule/) | 🟡 中等 | [代码](solutions/207.course-schedule.cpp) |  |
 | 209 | [长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/) | 🟡 中等 | [代码](solutions/209.minimum-size-subarray-sum.cpp) |  |
+| 210 | [课程表 II](https://leetcode.cn/problems/course-schedule-ii/) | 🟡 中等 | [代码](solutions/210.course-schedule-ii.cpp) |  |
 | 213 | [打家劫舍 II](https://leetcode.cn/problems/house-robber-ii/) | 🟡 中等 | [代码](solutions/213.house-robber-ii.cpp) |  |
 | 215 | [数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/) | 🟡 中等 | [代码](solutions/215.kth-largest-element-in-an-array.cpp) |  |
 | 216 | [组合总和 III](https://leetcode.cn/problems/combination-sum-iii/) | 🟡 中等 | [代码](solutions/216.combination-sum-iii.cpp) |  |
@@ -107,6 +112,7 @@
 | 257 | [二叉树的所有路径](https://leetcode.cn/problems/binary-tree-paths/) | 🟢 简单 | [代码](solutions/257.binary-tree-paths.cpp) |  |
 | 279 | [完全平方数](https://leetcode.cn/problems/perfect-squares/) | 🟡 中等 | [代码](solutions/279.perfect-squares.cpp) |  |
 | 283 | [移动零](https://leetcode.cn/problems/move-zeroes/) | 🟢 简单 | [代码](solutions/283.move-zeroes.cpp) |  |
+| 295 | [数据流的中位数](https://leetcode.cn/problems/find-median-from-data-stream/) | 🔴 困难 | [代码](solutions/295.find-median-from-data-stream.cpp) |  |
 | 300 | [最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/) | 🟡 中等 | [代码](solutions/300.longest-increasing-subsequence.cpp) |  |
 | 303 | [区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/) | 🟢 简单 | [代码](solutions/303.range-sum-query-immutable.cpp) |  |
 | 322 | [零钱兑换](https://leetcode.cn/problems/coin-change/) | 🟡 中等 | [代码](solutions/322.coin-change.cpp) |  |
@@ -124,6 +130,7 @@
 | 404 | [左叶子之和](https://leetcode.cn/problems/sum-of-left-leaves/) | 🟢 简单 | [代码](solutions/404.sum-of-left-leaves.cpp) |  |
 | 406 | [根据身高重建队列](https://leetcode.cn/problems/queue-reconstruction-by-height/) | 🟡 中等 | [代码](solutions/406.queue-reconstruction-by-height.cpp) |  |
 | 416 | [分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/) | 🟡 中等 | [代码](solutions/416.partition-equal-subset-sum.cpp) |  |
+| 417 | [太平洋大西洋水流问题](https://leetcode.cn/problems/pacific-atlantic-water-flow/) | 🟡 中等 | [代码](solutions/417.pacific-atlantic-water-flow.cpp) |  |
 | 435 | [无重叠区间](https://leetcode.cn/problems/non-overlapping-intervals/) | 🟡 中等 | [代码](solutions/435.non-overlapping-intervals.cpp) |  |
 | 445 | [两数相加 II](https://leetcode.cn/problems/add-two-numbers-ii/) | 🟡 中等 | [代码](solutions/445.add-two-numbers-ii.cpp) |  |
 | 450 | [删除二叉搜索树中的节点](https://leetcode.cn/problems/delete-node-in-a-bst/) | 🟡 中等 | [代码](solutions/450.delete-node-in-a-bst.cpp) |  |
@@ -131,6 +138,7 @@
 | 454 | [四数相加 II](https://leetcode.cn/problems/4sum-ii/) | 🟡 中等 | [代码](solutions/454.4sum-ii.cpp) |  |
 | 455 | [分发饼干](https://leetcode.cn/problems/assign-cookies/) | 🟢 简单 | [代码](solutions/455.assign-cookies.cpp) |  |
 | 459 | [重复的子字符串](https://leetcode.cn/problems/repeated-substring-pattern/) | 🟢 简单 | [代码](solutions/459.repeated-substring-pattern.cpp) |  |
+| 463 | [岛屿的周长](https://leetcode.cn/problems/island-perimeter/) | 🟢 简单 | [代码](solutions/463.island-perimeter.cpp) |  |
 | 474 | [一和零](https://leetcode.cn/problems/ones-and-zeroes/) | 🟡 中等 | [代码](solutions/474.ones-and-zeroes.cpp) |  |
 | 491 | [非递减子序列](https://leetcode.cn/problems/non-decreasing-subsequences/) | 🟡 中等 | [代码](solutions/491.non-decreasing-subsequences.cpp) |  |
 | 494 | [目标和](https://leetcode.cn/problems/target-sum/) | 🟡 中等 | [代码](solutions/494.target-sum.cpp) |  |
@@ -144,6 +152,7 @@
 | 530 | [二叉搜索树的最小绝对差](https://leetcode.cn/problems/minimum-absolute-difference-in-bst/) | 🟢 简单 | [代码](solutions/530.minimum-absolute-difference-in-bst.cpp) |  |
 | 538 | [把二叉搜索树转换为累加树](https://leetcode.cn/problems/convert-bst-to-greater-tree/) | 🟡 中等 | [代码](solutions/538.convert-bst-to-greater-tree.cpp) |  |
 | 541 | [反转字符串 II](https://leetcode.cn/problems/reverse-string-ii/) | 🟢 简单 | [代码](solutions/541.reverse-string-ii.cpp) |  |
+| 547 | [省份数量](https://leetcode.cn/problems/number-of-provinces/) | 🟡 中等 | [代码](solutions/547.number-of-provinces.cpp) |  |
 | 560 | [和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/) | 🟡 中等 | [代码](solutions/560.subarray-sum-equals-k.cpp) |  |
 | 617 | [合并二叉树](https://leetcode.cn/problems/merge-two-binary-trees/) | 🟢 简单 | [代码](solutions/617.merge-two-binary-trees.cpp) |  |
 | 637 | [二叉树的层平均值](https://leetcode.cn/problems/average-of-levels-in-binary-tree/) | 🟢 简单 | [代码](solutions/637.average-of-levels-in-binary-tree.cpp) |  |
@@ -153,14 +162,18 @@
 | 669 | [修剪二叉搜索树](https://leetcode.cn/problems/trim-a-binary-search-tree/) | 🟡 中等 | [代码](solutions/669.trim-a-binary-search-tree.cpp) |  |
 | 674 | [最长连续递增序列](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/) | 🟢 简单 | [代码](solutions/674.longest-continuous-increasing-subsequence.cpp) |  |
 | 682 | [棒球比赛](https://leetcode.cn/problems/baseball-game/) | 🟢 简单 | [代码](solutions/682.baseball-game.cpp) |  |
+| 684 | [冗余连接](https://leetcode.cn/problems/redundant-connection/) | 🟡 中等 | [代码](solutions/684.redundant-connection.cpp) |  |
+| 695 | [岛屿的最大面积](https://leetcode.cn/problems/max-area-of-island/) | 🟡 中等 | [代码](solutions/695.max-area-of-island.cpp) |  |
 | 700 | [二叉搜索树中的搜索](https://leetcode.cn/problems/search-in-a-binary-search-tree/) | 🟢 简单 | [代码](solutions/700.search-in-a-binary-search-tree.cpp) |  |
 | 701 | [二叉搜索树中的插入操作](https://leetcode.cn/problems/insert-into-a-binary-search-tree/) | 🟡 中等 | [代码](solutions/701.insert-into-a-binary-search-tree.cpp) |  |
+| 703 | [数据流中的第 K 大元素](https://leetcode.cn/problems/kth-largest-element-in-a-stream/) | 🟢 简单 | [代码](solutions/703.kth-largest-element-in-a-stream.cpp) |  |
 | 704 | [二分查找](https://leetcode.cn/problems/binary-search/) | 🟢 简单 | [代码](solutions/704.binary-search.cpp) |  |
 | 707 | [设计链表](https://leetcode.cn/problems/design-linked-list/) | 🟡 中等 | [代码](solutions/707.design-linked-list.cpp) |  |
 | 709 | [转换成小写字母](https://leetcode.cn/problems/to-lower-case/) | 🟢 简单 | [代码](solutions/709.to-lower-case.cpp) |  |
 | 718 | [最长重复子数组](https://leetcode.cn/problems/maximum-length-of-repeated-subarray/) | 🟡 中等 | [代码](solutions/718.maximum-length-of-repeated-subarray.cpp) |  |
 | 724 | [寻找数组的中心下标](https://leetcode.cn/problems/find-pivot-index/) | 🟢 简单 | [代码](solutions/724.find-pivot-index.cpp) |  |
 | 739 | [每日温度](https://leetcode.cn/problems/daily-temperatures/) | 🟡 中等 | [代码](solutions/739.daily-temperatures.cpp) |  |
+| 743 | [网络延迟时间](https://leetcode.cn/problems/network-delay-time/) | 🟡 中等 | [代码](solutions/743.network-delay-time.cpp) |  |
 | 746 | [使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/) | 🟢 简单 | [代码](solutions/746.min-cost-climbing-stairs.cpp) |  |
 | 763 | [划分字母区间](https://leetcode.cn/problems/partition-labels/) | 🟡 中等 | [代码](solutions/763.partition-labels.cpp) |  |
 | 860 | [柠檬水找零](https://leetcode.cn/problems/lemonade-change/) | 🟢 简单 | [代码](solutions/860.lemonade-change.cpp) |  |
@@ -169,9 +182,11 @@
 | 912 | [排序数组](https://leetcode.cn/problems/sort-an-array/) | 🟡 中等 | [代码](solutions/912.sort-an-array.cpp) |  |
 | 976 | [三角形的最大周长](https://leetcode.cn/problems/largest-perimeter-triangle/) | 🟢 简单 | [代码](solutions/976.largest-perimeter-triangle.cpp) |  |
 | 977 | [有序数组的平方](https://leetcode.cn/problems/squares-of-a-sorted-array/) | 🟢 简单 | [代码](solutions/977.squares-of-a-sorted-array.cpp) |  |
+| 994 | [腐烂的橘子](https://leetcode.cn/problems/rotting-oranges/) | 🟡 中等 | [代码](solutions/994.rotting-oranges.cpp) |  |
 | 1002 | [查找共用字符](https://leetcode.cn/problems/find-common-characters/) | 🟢 简单 | [代码](solutions/1002.find-common-characters.cpp) |  |
 | 1005 | [K 次取反后最大化的数组和](https://leetcode.cn/problems/maximize-sum-of-array-after-k-negations/) | 🟢 简单 | [代码](solutions/1005.maximize-sum-of-array-after-k-negations.cpp) |  |
 | 1011 | [在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/) | 🟡 中等 | [代码](solutions/1011.capacity-to-ship-packages-within-d-days.cpp) |  |
+| 1020 | [飞地的数量](https://leetcode.cn/problems/number-of-enclaves/) | 🟡 中等 | [代码](solutions/1020.number-of-enclaves.cpp) |  |
 | 1041 | [困于环中的机器人](https://leetcode.cn/problems/robot-bounded-in-circle/) | 🟡 中等 | [代码](solutions/1041.robot-bounded-in-circle.cpp) |  |
 | 1047 | [删除字符串中的所有相邻重复项](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/) | 🟢 简单 | [代码](solutions/1047.remove-all-adjacent-duplicates-in-string.cpp) |  |
 | 1049 | [最后一块石头的重量 II](https://leetcode.cn/problems/last-stone-weight-ii/) | 🟡 中等 | [代码](solutions/1049.last-stone-weight-ii.cpp) |  |
@@ -185,3 +200,4 @@
 | 1672 | [最富有客户的资产总量](https://leetcode.cn/problems/richest-customer-wealth/) | 🟢 简单 | [代码](solutions/1672.richest-customer-wealth.cpp) |  |
 | 1768 | [交替合并字符串](https://leetcode.cn/problems/merge-strings-alternately/) | 🟢 简单 | [代码](solutions/1768.merge-strings-alternately.cpp) |  |
 | 1822 | [数组元素积的符号](https://leetcode.cn/problems/sign-of-the-product-of-an-array/) | 🟢 简单 | [代码](solutions/1822.sign-of-the-product-of-an-array.cpp) |  |
+| 1971 | [寻找图中是否存在路径](https://leetcode.cn/problems/find-if-path-exists-in-graph/) | 🟢 简单 | [代码](solutions/1971.find-if-path-exists-in-graph.cpp) |  |
